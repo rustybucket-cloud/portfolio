@@ -1,5 +1,4 @@
 import './scss/styles.scss';
-import sm from "./images/jacob/sm.jpg"
 import lg from "./images/jacob/lg.jpg"
 import github from "./images/icons/github-brands.svg"
 import linkedin from "./images/icons/linkedin-brands.svg"
