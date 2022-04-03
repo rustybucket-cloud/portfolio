@@ -82,6 +82,9 @@ section {
     display: grid;
     grid-template-columns: 2fr 1fr;
     margin-bottom: 1rem;
+    ul {
+        grid-column: span 2;
+    }
 
     .timeFrame { text-align: end; }
 }
