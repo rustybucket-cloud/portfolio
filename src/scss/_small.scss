@@ -1,0 +1,106 @@
+body {
+    font-family: "Source Code Pro", sans-serif;
+}
+
+nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    ul {
+        width: 100%;
+        display: flex;
+        list-style-type: none;
+        gap: 1rem;
+        justify-content: center;
+    }
+    li.active { border-bottom: 1px solid white; }
+    color: white;
+}
+
+section {
+    padding: 5rem 2rem 2rem 2rem;
+    height: 100vh;
+
+    h1, h2 {
+        font-size: 36px;
+    }
+}
+.section-content { 
+    max-width: 60rem; 
+    margin: auto;
+}
+
+.about-me {
+    background-color: #0d0000;
+    color: #d0d0d0;
+    text-align: center;
+
+    & picture {
+        margin: auto;
+        margin-top: 2rem;
+        max-width: 500px;
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        gap: 2rem;
+        
+        img { height: 5rem; }
+    }
+}
+
+.resume {
+    background-color: #D63BD9;
+    color: #FFD0FF;
+
+    h3 { font-size: 24px; }
+}
+.resume__section { 
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 1rem;
+
+    .timeFrame { text-align: end; }
+}
+
+.projects {
+    background-color: #D97904;
+    color: #FFFFA2;
+
+    figure {
+        img {
+            max-height: 50vh;
+        }
+    }
+}
+.projects__used {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-me {
+    background-color: #F2A81D;
+    color: #6F3A00;
+    form * {
+        display: block;
+    }
+    input, textarea, button {
+        border: none;
+        padding: .5rem;
+        width: 100%;
+        border-radius: 5px;
+    }
+    textarea { height: 15rem; }
+    button { 
+        margin-top: 1rem; 
+        background-color: #D63BD9;
+        color: white;
+    }
+}
