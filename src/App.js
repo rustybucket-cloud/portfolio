@@ -54,7 +54,7 @@ const App = () => {
         <h1>Hi! I'm Jacob Patton</h1>
         <p>I'm a Web developer located in Provo, Ut</p>
         <picture>
-          <img src={lg}/>
+          <img src={lg} alt="A picture of me with a tree in the background"/>
         </picture>
         <div className="icons">
           <img src={github} />
@@ -106,7 +106,7 @@ const App = () => {
           <h2>Projects</h2>
           <h3>IP Address Tracker</h3>
           <figure>
-            <img src={ipTracker} />
+            <img src={ipTracker} alt="a screenshot of a project"/>
           </figure>
           <div className="projects__used">
             <div>
