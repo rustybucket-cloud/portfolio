@@ -43,7 +43,7 @@ const App = () => {
         </ul>
       </nav>
 
-     <svg width="20px">
+     <svg className="nav__svg" width="20px">
        <circle onClick={() => handleClick('about')} id="scroll-about" cx="8px" cy="8px" r={active === "about" ?  "8px" : "4px"} fill="white"/>
        <circle onClick={() => handleClick('resume')} cx="8px" cy="32px" r={active === "resume" ?  "8px" : "4px"} fill="white"/>
        <circle onClick={() => handleClick('projects')} cx="8px" cy="56px" r={active === "projects" ?  "8px" : "4px"} fill="white"/>
