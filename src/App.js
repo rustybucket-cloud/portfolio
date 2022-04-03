@@ -4,28 +4,53 @@ import lg from "./images/jacob/lg.jpg"
 import github from "./images/icons/github-brands.svg"
 import linkedin from "./images/icons/linkedin-brands.svg"
 import ipTracker from "./images/projects/ip-tracker/ip-tracker.png"
+import { useState, useRef } from 'react';
 
 const App = () => {
+  const [ active, setActive ] = useState('about')
 
-  /* <ReactFullpage
-    licenseKey = {'66FA1FE0-CD044B13-9926086E-20D97A50'}
-    scrollingSpeed = {1000}
+  const aboutRef = useRef(null)
+  const resumeRef = useRef(null)
+  const projectsRef = useRef(null)
+  const contactRef = useRef(null)
 
-    render={({state, fullpageApi}) => {
-      <ReactFullpage.Wrapper> */
+  window.onscroll = () => {
+    console.log("scroll")
+    const scrollPosition = window.pageYOffset
+    const height = window.innerHeight
+    console.log(scrollPosition, height)
+    if (scrollPosition < height - 10 ) setActive('about')
+    else if ( scrollPosition > height - 10 && scrollPosition < (height * 2) - 10) setActive('resume')
+    else if ( scrollPosition > (height * 2) - 10 && scrollPosition < (height * 3) - 10) setActive('projects')
+    else  setActive('contact')
+  }
+
+  const handleClick = (location) => {
+    if (location === "about") aboutRef.current.scrollIntoView()
+    else if (location === "resume") resumeRef.current.scrollIntoView()
+    else if (location === "projects") projectsRef.current.scrollIntoView()
+    else if (location === "contact") contactRef.current.scrollIntoView()
+  }
   
   return (
-    <div className="App">
+    <div className="App" >
       <nav>
         <ul>
-          <li className="active">About Me</li>
-          <li>Resume</li>
-          <li>Projects</li>
-          <li>Contact</li>
+          <li className={active === "about" ?  "active" : ""}><a href="#about-me">About Me</a></li>
+          <li className={active === "resume" ?  "active" : ""}><a href="#resume">Resume</a></li>
+          <li className={active === "projects" ?  "active" : ""}><a href="#projects">Projects</a></li>
+          <li className={active === "contact" ?  "active" : ""}><a href="#contact-me">Contact</a></li>
         </ul>
       </nav>
 
-      <section aria-label="About Me" className="about-me">
+     <svg width="20px">
+       <circle onClick={() => handleClick('about')} id="scroll-about" cx="8px" cy="8px" r={active === "about" ?  "8px" : "4px"} fill="white"/>
+       <circle onClick={() => handleClick('resume')} cx="8px" cy="32px" r={active === "resume" ?  "8px" : "4px"} fill="white"/>
+       <circle onClick={() => handleClick('projects')} cx="8px" cy="56px" r={active === "projects" ?  "8px" : "4px"} fill="white"/>
+       <circle onClick={() => handleClick('contact')} cx="8px" cy="80px" r={active === "contact" ?  "8px" : "4px"} fill="white"/>
+     </svg>
+
+      <section ref={aboutRef} aria-label="About Me" id="about-me" className="about-me">
         <h1>Hi! I'm Jacob Patton</h1>
         <p>I'm a Web developer located in Provo, Ut</p>
         <picture>
@@ -37,7 +62,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="resume">
+      <section ref={resumeRef} id="resume" className="resume">
         <div className="section-content">
           <h2>Resume</h2>
 
@@ -76,7 +101,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="projects">
+      <section ref={projectsRef} id="projects" className="projects">
         <div className="section-content">
           <h2>Projects</h2>
           <h3>IP Address Tracker</h3>
@@ -105,7 +130,7 @@ const App = () => {
         </div>
       </section>
     
-      <section className="contact-me">
+      <section ref={contactRef} id="contact-me" className="contact-me">
         <div className="section-content">
           <h2>Contact Me</h2>
           <form>
