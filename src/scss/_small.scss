@@ -103,6 +103,7 @@ section {
     svg { 
         height: 2.5rem; 
         position: absolute;
+        display: block;
 
         &:hover { transform: scale(1.5); }
     }
