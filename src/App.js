@@ -3,10 +3,19 @@ import lg from "./images/jacob/lg.jpg"
 import github from "./images/icons/github-brands.svg"
 import linkedin from "./images/icons/linkedin-brands.svg"
 import ipTracker from "./images/projects/ip-tracker/ip-tracker.png"
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from "react"
+import Project from './components/Project';
+import projects from "./projects.json"
+
+import { ReactComponent as Left } from "./images/icons/chevron-left.svg"
+import { ReactComponent as Right } from "./images/icons/chevron-right.svg"
 
 const App = () => {
   const [ active, setActive ] = useState('about')
+  const [ project, setProject ] = useState(0)
+  const [ animation, setAnimation ] = useState(false)
+  
+  const projectPageRef = useRef(null)
 
   const aboutRef = useRef(null)
   const resumeRef = useRef(null)
@@ -14,10 +23,8 @@ const App = () => {
   const contactRef = useRef(null)
 
   window.onscroll = () => {
-    console.log("scroll")
     const scrollPosition = window.pageYOffset
     const height = window.innerHeight
-    console.log(scrollPosition, height)
     if (scrollPosition < height - 10 ) setActive('about')
     else if ( scrollPosition > height - 10 && scrollPosition < (height * 2) - 10) setActive('resume')
     else if ( scrollPosition > (height * 2) - 10 && scrollPosition < (height * 3) - 10) setActive('projects')
@@ -30,6 +37,64 @@ const App = () => {
     else if (location === "projects") projectsRef.current.scrollIntoView()
     else if (location === "contact") contactRef.current.scrollIntoView()
   }
+
+  const changeProject = (direction) => {
+    if (animation) return
+      setTimeout(() => {
+      if (direction === "next") {
+        if (project === projects.length - 1) setProject(0)
+        else setProject(project => project += 1)
+      }
+      else if (direction === "back") {
+        if (project === 0) setProject(projects.length - 1)
+        else setProject(project => project -= 1)
+      }
+    }, 500)
+    runAnimation(direction)
+  }
+
+  const runAnimation = (direction) => {
+    setAnimation(true)
+    projectPageRef.current.classList.add(direction)
+    setTimeout(() => {
+      projectPageRef.current.classList.add("enter")
+      setTimeout(() => {
+        projectPageRef.current.classList.remove(direction)
+        projectPageRef.current.classList.remove("enter")
+        setAnimation(null)
+      }, 700)
+    }, 700)
+  }
+
+  useEffect(() => {
+    if (animation) {
+      setTimeout(() => setAnimation(false), 1500)
+    }
+  }, [animation])
+
+  /* useEffect(() => {
+    if (animation === 'next') {
+      projectPageRef.current.classList.add("next")
+      setTimeout(() => {
+        projectPageRef.current.classList.add("enter")
+        setTimeout(() => {
+          projectPageRef.current.classList.remove("next")
+          projectPageRef.current.classList.remove("enter")
+          setAnimation(null)
+        }, 750)
+      }, 750)
+    } else if (animation === 'back') {
+      projectPageRef.current.classList.add("back")
+      setTimeout(() => {
+        projectPageRef.current.classList.add("enter")
+        setTimeout(() => {
+          projectPageRef.current.classList.remove("back")
+          projectPageRef.current.classList.remove("enter")
+          setAnimation(null)
+        }, 750)
+      }, 750)
+    }
+  }, [animation]) */
   
   return (
     <div className="App" >
@@ -103,29 +168,17 @@ const App = () => {
       <section ref={projectsRef} id="projects" className="projects">
         <div className="section-content">
           <h2>Projects</h2>
-          <h3>IP Address Tracker</h3>
-          <figure>
-            <img src={ipTracker} alt="a screenshot of a project"/>
-          </figure>
-          <div className="projects__used">
-            <div>
-              <h4>I Used</h4>
-              <ul>
-                <li>jQuery</li>
-                <li>SCSS</li>
-                <li>IP Geolocation API by IPify</li>
-                <li>Leaflet JS</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4>Challenges</h4>
-              <ul>
-                <li>Learning Leaflet JS</li>
-                <li>Creating a responsive background image</li>
-              </ul>
-            </div>
+          <Left className="left" onClick={() => {
+            changeProject("back")
+            runAnimation("back")
+          }} />
+          <div ref={projectPageRef} className="project">
+            { projects && <Project name={projects[project].name} img={ipTracker} used={projects[project].used} challenges={projects[project].challenges}/> }
           </div>
+          <Right className="right" onClick={() => {
+            changeProject("next")
+            runAnimation("next")
+          }} />
         </div>
       </section>
     

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "IP Address Tracker",
+        "img": "./images/projects/ip-tracker/ip-tracker.png",
+        "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
+        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ]
+    },
+    {
+        "name": "Project 2",
+        "img": "./images/projects/ip-tracker/ip-tracker.png",
+        "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
+        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ]
+    },
+    {
+        "name": "Project 3",
+        "img": "./images/projects/ip-tracker/ip-tracker.png",
+        "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
+        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ]
+    }
+]

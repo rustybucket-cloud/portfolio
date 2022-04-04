@@ -92,12 +92,47 @@ section {
 .projects {
     background-color: #D97904;
     color: #FFFFA2;
+    position: relative;
 
     figure {
         img {
             max-height: 50vh;
         }
     }
+
+    svg { 
+        height: 2.5rem; 
+        position: absolute;
+
+        &:hover { transform: scale(1.5); }
+    }
+    .left { left: 1rem; }
+    .right { right: 1rem; }
+}
+.project.next {
+    animation: next .75s;
+}
+.project.next.enter { animation: nextEnter .75s; } 
+.project.back {
+    animation: back .75s;
+
+    &.enter { animation: backEnter .75s; }
+}
+@keyframes next {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+@keyframes nextEnter {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}
+@keyframes back {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+@keyframes backEnter {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
 }
 .projects__used {
     display: flex;
