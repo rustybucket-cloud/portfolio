@@ -7,6 +7,7 @@ body {
 }
 
 nav {
+    z-index: 999;
     position: fixed;
     inset: 0 0 auto 0;
     ul {
@@ -25,7 +26,7 @@ nav {
     color: white;
 }
 
-svg {
+.nav__svg {
     display: none;
     position: fixed;
     right: 5rem;
@@ -94,47 +95,63 @@ section {
     color: #FFFFA2;
     position: relative;
 
+    h3 { text-align: center; }
     figure {
         img {
+            margin: auto;
             max-height: 50vh;
         }
     }
 
-    svg { 
-        height: 2.5rem; 
-        position: absolute;
-        display: block;
+    &__btns {
+        max-width: 30rem;
+        margin: 1rem auto;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
 
-        &:hover { transform: scale(1.5); }
+        a {
+            background-color: #FFFFA2;
+            color: black;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    }
+
+    .change-project {
+        position: absolute;
+        top: 50%;
+        display: block;
+        
+        background: none;
+        border: none;
+
+        & svg {
+            height: 2.5rem;  
+        }
+        &:hover svg { transform: scale(1.5); }
     }
     .left { left: 1rem; }
     .right { right: 1rem; }
 }
-.project.next {
-    animation: next .75s;
-}
-.project.next.enter { animation: nextEnter .75s; } 
-.project.back {
-    animation: back .75s;
-
-    &.enter { animation: backEnter .75s; }
-}
+.project.next { animation: next 1.5s; }
+.project.back { animation: back 1.5s; }
 @keyframes next {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-}
-@keyframes nextEnter {
-    0% { transform: translateX(100%); }
+    49% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
     100% { transform: translateX(0); }
 }
 @keyframes back {
     0% { transform: translateX(0); }
-    100% { transform: translateX(100%); }
-}
-@keyframes backEnter {
-    0% { transform: translateX(-100%); }
+    49% { transform: translateX(110%); }
+    50% { transform: translateX(-100%); }
     100% { transform: translateX(0); }
 }
+
 .projects__used {
     display: flex;
     justify-content: space-between;

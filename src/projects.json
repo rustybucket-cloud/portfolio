@@ -3,18 +3,24 @@
         "name": "IP Address Tracker",
         "img": "./images/projects/ip-tracker/ip-tracker.png",
         "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
-        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ]
+        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ],
+        "live": "https://ip-address-tracker-jp.netlify.app/",
+        "code": "https://github.com/rustybucket-cloud/ip-address-tracker"
     },
     {
         "name": "Project 2",
         "img": "./images/projects/ip-tracker/ip-tracker.png",
         "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
-        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ]
+        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ],
+        "live": "https://ip-address-tracker-jp.netlify.app/",
+        "code": "https://github.com/rustybucket-cloud/ip-address-tracker"
     },
     {
         "name": "Project 3",
         "img": "./images/projects/ip-tracker/ip-tracker.png",
         "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
-        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ]
+        "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ],
+        "live": "https://ip-address-tracker-jp.netlify.app/",
+        "code": "https://github.com/rustybucket-cloud/ip-address-tracker"
     }
 ]
