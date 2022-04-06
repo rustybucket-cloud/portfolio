@@ -2,7 +2,6 @@ import { ReactComponent as Left } from "../images/icons/chevron-left.svg"
 import { ReactComponent as Right } from "../images/icons/chevron-right.svg"
 import projects from "../projects.json"
 import ipTracker from "../images/projects/ip-tracker/ip-tracker.png"
-import { Link } from "react-router-dom"
 import ProjectPage from "./ProjectPage"
 
 import { useRef, useState, useEffect } from "react"
@@ -67,8 +66,8 @@ export default function Project() {
             <img src={projectInfo.img} alt="a screenshot of a project"/>
           </figure>
           <div className="projects__btns">
-            <a href={projectInfo.live} target="_blank">Live Site</a>
-            <a href={projectInfo.code} target="_blank">Code</a>
+            <a href={projectInfo.live} target="_blank" rel="noreferrer">Live Site</a>
+            <a href={projectInfo.code} target="_blank" rel="noreferrer">Code</a>
             <button onClick={() => setIsFullPage(true)}>About this Project</button>
           </div>
           <div className="projects__used">

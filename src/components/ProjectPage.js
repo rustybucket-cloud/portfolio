@@ -1,21 +1,6 @@
-import projects from "../projects.json"
-import { useState, useEffect } from "react"
-import { useParams } from "react-router"
 import { ReactComponent as X } from "../images/icons/x-solid.svg"
 
 export default function ProjectPage({project, setIsFullPage}) {
-    const [ projectInfo, setProjectInfo ] = useState(null)
-
-    //const { name } = useParams()
-
-    /* useEffect(() => {
-        projects.forEach(project => {
-            console.log(project)
-            if (project.rel === name) setProjectInfo(project)
-        })
-    }, [name]) */
-
-
     return project ? (
         <div className="projectPage">
             <button aria-label="close modal" classList="projectPage__close" onClick={() => setIsFullPage(false)}>
@@ -23,7 +8,7 @@ export default function ProjectPage({project, setIsFullPage}) {
             </button>
             <h1>{project.name}</h1>
             <figure>
-                <img src={project.img} />
+                <img src={project.img} alt="project"/>
             </figure>
             <div className="projectPage__lists">
                 <div className="projectPage__lists__div">
