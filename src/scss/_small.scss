@@ -157,6 +157,38 @@ section {
     justify-content: space-between;
 }
 
+.projectPage {
+    z-index: 9999;
+    position: absolute;
+    inset: 2vh 2vw;
+    padding: 2rem;
+    border: 2px solid black;
+    background-color: white;
+    animation: show 1s;
+    overflow: hidden;
+
+    color: #D97904;
+
+    button { 
+        position: absolute;
+        background: none; 
+        border: none; 
+        right: 1rem;
+        top: 1rem;
+    }
+    svg {
+        height: 1rem;
+    }
+
+    &__lists {
+        &__div { display: grid; grid-template-columns: 1fr 1fr; align-items: center;}
+    }
+}
+@keyframes show {
+    0% { inset: 50%; }
+    100% { inset: 2vh 2vw; }
+}
+
 .contact-me {
     background-color: #F2A81D;
     color: #6F3A00;

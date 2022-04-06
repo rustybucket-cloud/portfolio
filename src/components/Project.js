@@ -2,13 +2,16 @@ import { ReactComponent as Left } from "../images/icons/chevron-left.svg"
 import { ReactComponent as Right } from "../images/icons/chevron-right.svg"
 import projects from "../projects.json"
 import ipTracker from "../images/projects/ip-tracker/ip-tracker.png"
+import { Link } from "react-router-dom"
+import ProjectPage from "./ProjectPage"
 
 import { useRef, useState, useEffect } from "react"
 
-export default function Project({name, img, used, challenges}) {
+export default function Project() {
   const [ project, setProject ] = useState(0)
   const [ animation, setAnimation ] = useState(false)
   const [ projectInfo, setProjectInfo ] = useState(null)
+  const [ isFullPage, setIsFullPage ] = useState(false)
 
   useEffect(() => {
     setProjectInfo({
@@ -18,7 +21,7 @@ export default function Project({name, img, used, challenges}) {
       challenges: projects[project].challenges,
       live: projects[project].live,
       code: projects[project].code,
-      rel: projects[project].name.replace(" ", "").toLowerCase()
+      rel: projects[project].rel
     })
   }, [project])
 
@@ -66,22 +69,9 @@ export default function Project({name, img, used, challenges}) {
           <div className="projects__btns">
             <a href={projectInfo.live} target="_blank">Live Site</a>
             <a href={projectInfo.code} target="_blank">Code</a>
-            <a href={`../${projectInfo.rel}`}>About this Project</a>
+            <button onClick={() => setIsFullPage(true)}>About this Project</button>
           </div>
           <div className="projects__used">
-           {/*  <div>
-              <h4>I Used</h4>
-              <ul>
-                {projectInfo.used.map( (item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </div>
-            
-            <div>
-              <h4>Challenges</h4>
-              <ul>
-                {projectInfo.challenges.map( (challenge, i) => <li key={i}>{challenge}</li>)}
-              </ul>
-            </div> */}
           </div>
           <button className="left change-project"
             onClick={() => {
@@ -105,6 +95,7 @@ export default function Project({name, img, used, challenges}) {
           >
             <Right/>
           </button>
+          { isFullPage && <ProjectPage project={projectInfo} setIsFullPage={setIsFullPage}/> }
         </div>
     ) : null
 }
