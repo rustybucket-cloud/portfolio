@@ -1,9 +1,10 @@
-html {
+/* html {
     scroll-behavior: smooth;
 }
-
+ */
 body {
     font-family: "Source Code Pro", sans-serif;
+    max-height: 100vh;
 }
 
 nav {
@@ -33,9 +34,18 @@ nav {
     top: 50%;
 }
 
+.page-sections {
+    display: grid;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior: contain;
+}
+
 section {
     padding: 5rem 2rem 2rem 2rem;
     height: 100vh;
+    scroll-snap-align: start;
 
     h1, h2 {
         font-size: 36px;

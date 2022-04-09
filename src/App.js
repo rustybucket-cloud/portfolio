@@ -45,7 +45,7 @@ const App = () => {
             <circle onClick={() => handleClick('projects')} cx="8px" cy="56px" r={active === "projects" ?  "8px" : "4px"} fill="white"/>
             <circle onClick={() => handleClick('contact')} cx="8px" cy="80px" r={active === "contact" ?  "8px" : "4px"} fill="white"/>
           </svg>
-
+      <div className="page-sections">
             <section ref={aboutRef} aria-label="About Me" id="about-me" className="about-me">
               <h1>Hi! I'm Jacob Patton</h1>
               <p>I'm a Web developer located in Provo, Ut</p>
@@ -121,6 +121,7 @@ const App = () => {
             </form>
           </div>
         </section>
+      </div>
     </div>
   );
 }
