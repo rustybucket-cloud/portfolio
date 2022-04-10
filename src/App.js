@@ -23,7 +23,6 @@ const App = () => {
     const email = emailRef.current?.value
     const message = messageRef.current?.value
 
-    let response
     if (name && email && message) {
       try {
         response = await mail(name, email, message)
