@@ -1,7 +1,7 @@
 [
     {
         "name": "IP Address Tracker",
-        "img": "./images/projects/ip-tracker/ip-tracker.png",
+        "img": "https://drive.google.com/uc?export=view&id=1lq533FUAPJ_Hk6EF3ut-h2Sqmrwaed7r",
         "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
         "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ],
         "live": "https://ip-address-tracker-jp.netlify.app/",
@@ -10,7 +10,7 @@
     },
     {
         "name": "Project 2",
-        "img": "./images/projects/ip-tracker/ip-tracker.png",
+        "img": "https://drive.google.com/uc?export=view&id=1lq533FUAPJ_Hk6EF3ut-h2Sqmrwaed7r",
         "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
         "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ],
         "live": "https://ip-address-tracker-jp.netlify.app/",
@@ -19,7 +19,7 @@
     },
     {
         "name": "Project 3",
-        "img": "./images/projects/ip-tracker/ip-tracker.png",
+        "img": "https://drive.google.com/uc?export=view&id=1lq533FUAPJ_Hk6EF3ut-h2Sqmrwaed7r",
         "used": [ "jQuery", "SCSS", "IP Geolocation API by IPify", "Leaflet JS" ],
         "challenges": [ "Learning Leaflet JS", "Creating a responsive background image" ],
         "live": "https://ip-address-tracker-jp.netlify.app/",

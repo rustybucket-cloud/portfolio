@@ -5,6 +5,7 @@ import linkedin from "./images/icons/linkedin-brands.svg"
 import { useState, useRef } from "react"
 import Project from './components/Project';
 import mail from './mail';
+import projects from "./projects.json"
 
 const App = () => {
   const [ active, setActive ] = useState('about')
@@ -37,8 +38,9 @@ const App = () => {
     }
   }
 
-  window.onscroll = () => {
-    const scrollPosition = window.pageYOffset
+  const handleScroll = ({currentTarget}) => {
+    const scrollPosition = currentTarget.scrollTop
+    console.log(scrollPosition)
     const height = window.innerHeight
     if (scrollPosition < height - 10 ) setActive('about')
     else if ( scrollPosition > height - 10 && scrollPosition < (height * 2) - 10) setActive('resume')
@@ -69,7 +71,7 @@ const App = () => {
             <circle onClick={() => handleClick('projects')} cx="8px" cy="56px" r={active === "projects" ?  "8px" : "4px"} fill="white"/>
             <circle onClick={() => handleClick('contact')} cx="8px" cy="80px" r={active === "contact" ?  "8px" : "4px"} fill="white"/>
           </svg>
-      <div className="page-sections">
+      <div className="page-sections" onScroll={handleScroll}>
             <section ref={aboutRef} aria-label="About Me" id="about-me" className="about-me">
               <h1>Hi! I'm Jacob Patton</h1>
               <p>I'm a Web developer located in Provo, Ut</p>
@@ -122,9 +124,9 @@ const App = () => {
             </section>
 
             <section ref={projectsRef} id="projects" className="projects">
+              <h2>Projects</h2>
               <div className="section-content">
-                <h2>Projects</h2>
-                <Project />
+                {projects.map(project => <Project project={project} /> )}
               </div>
             </section>
           

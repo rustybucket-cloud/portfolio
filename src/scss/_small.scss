@@ -1,7 +1,6 @@
-/* html {
+html {
     scroll-behavior: smooth;
 }
- */
 body {
     font-family: "Source Code Pro", sans-serif;
     max-height: 100vh;
@@ -40,6 +39,7 @@ nav {
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     overscroll-behavior: contain;
+    scroll-behavior: smooth;
 }
 
 section {
@@ -104,6 +104,25 @@ section {
     background-color: #D97904;
     color: #FFFFA2;
     position: relative;
+
+    .section-content {
+        max-width: 80vw;
+        height: 80%;
+        padding-bottom: 5vw;
+        display: grid;
+        grid-auto-flow: column;
+        gap: 5vw;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior: contain;
+
+        .project {
+            width: 60vw;
+            scroll-snap-align: center;
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+    }
 
     h3 { text-align: center; }
     figure {
