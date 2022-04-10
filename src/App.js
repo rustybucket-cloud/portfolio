@@ -25,7 +25,7 @@ const App = () => {
 
     if (name && email && message) {
       try {
-        response = await mail(name, email, message)
+        await mail(name, email, message)
       } catch(err) {
         console.error(err)
         return
