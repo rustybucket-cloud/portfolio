@@ -1,0 +1,12 @@
+[build]
+  publish="build/"
+  functions="netlify/functions"
+  command="npm run build"
+
+[dev]
+  functions="netlify/functions"
+  command="npm start"
+
+[[redirects]]
+  from="/mail"
+  to="/.netlify/functions/mail"

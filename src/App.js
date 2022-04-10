@@ -4,6 +4,7 @@ import github from "./images/icons/github-brands.svg"
 import linkedin from "./images/icons/linkedin-brands.svg"
 import { useState, useRef } from "react"
 import Project from './components/Project';
+import mail from './mail';
 
 const App = () => {
   const [ active, setActive ] = useState('about')
@@ -12,6 +13,30 @@ const App = () => {
   const resumeRef = useRef(null)
   const projectsRef = useRef(null)
   const contactRef = useRef(null)
+
+  const nameRef = useRef(null)
+  const emailRef = useRef(null)
+  const messageRef = useRef(null)
+
+  const sendMessage = async () => {
+    const name = nameRef.current?.value
+    const email = emailRef.current?.value
+    const message = messageRef.current?.value
+
+    let response
+    if (name && email && message) {
+      try {
+        response = await mail(name, email, message)
+      } catch(err) {
+        console.error(err)
+        return
+      } finally {
+        nameRef.current.value = ""
+        emailRef.current.value = ""
+        messageRef.current.value = ""
+      }
+    }
+  }
 
   window.onscroll = () => {
     const scrollPosition = window.pageYOffset
@@ -30,7 +55,7 @@ const App = () => {
   }
   
   return (
-    <div className="App" >
+    <div className="App">
       <nav>
         <ul>
           <li className={active === "about" ?  "active" : ""}><a href="#about-me">About Me</a></li>
@@ -109,15 +134,15 @@ const App = () => {
             <h2>Contact Me</h2>
             <form>
               <label>Name
-                <input id="name" required/>
+                <input ref={nameRef} id="name" name="name" required/>
               </label>
               <label>Email
-                <input id="email" required/>
+                <input ref={emailRef} id="email" name="email" required/>
               </label>
               <label>Message
-                <textarea id="message" required/>
+                <textarea ref={messageRef} id="message" name="message" required/>
               </label>
-              <button>SEND MESSAGE</button>
+              <button type="button" onClick={sendMessage}>SEND MESSAGE</button>
             </form>
           </div>
         </section>
