@@ -2,7 +2,7 @@ import './scss/styles.scss';
 import lg from "./images/jacob/lg.jpg"
 import github from "./images/icons/github-brands.svg"
 import linkedin from "./images/icons/linkedin-brands.svg"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Project from './components/Project';
 import mail from './mail';
 import projects from "./projects.json"
@@ -10,10 +10,15 @@ import projects from "./projects.json"
 const App = () => {
   const [ active, setActive ] = useState('about')
 
+  const [ startScroll, setStartScroll] = useState(false)
+  const [ endScroll, setEndScroll ] = useState(false)
+
   const aboutRef = useRef(null)
   const resumeRef = useRef(null)
   const projectsRef = useRef(null)
   const contactRef = useRef(null)
+  const projectContentRef = useRef(null)
+  const projectContentCopyRef = useRef(null)
 
   const nameRef = useRef(null)
   const emailRef = useRef(null)
@@ -47,6 +52,21 @@ const App = () => {
     else if ( scrollPosition > (height * 2) - 10 && scrollPosition < (height * 3) - 10) setActive('projects')
     else  setActive('contact')
   }
+
+  useEffect(() => {
+    projectContentCopyRef.current.scrollBy(1000000, 0)
+  }, [])
+
+  const handleProjectScroll = () => {
+
+  }
+
+  useEffect(() => {
+    if (endScroll) {
+      setStartScroll(false)
+      setEndScroll(false)
+    }
+  }, [endScroll])
 
   const handleClick = (location) => {
     if (location === "about") aboutRef.current.scrollIntoView()
@@ -125,7 +145,18 @@ const App = () => {
 
             <section ref={projectsRef} id="projects" className="projects">
               <h2>Projects</h2>
-              <div className="section-content">
+              <div ref={projectContentRef} className="section-content" onScroll={() => {
+                  const scroll = (projectsRef.current.offsetWidth - 16) - projectContentRef.current.scrollLeft
+                  if (scroll > 0) {
+                    projectContentCopyRef.current.scroll({ left: scroll})
+                  }
+              }}>
+                {projects.map(project => <Project project={project} /> )}
+              </div>
+              <div ref={projectContentCopyRef} className="section-content" onScroll={() => {
+                  const scroll = (projectsRef.current.offsetWidth + 16) - projectContentCopyRef.current.scrollLeft
+                  projectContentRef.current.scroll({ left: scroll})
+              }}>
                 {projects.map(project => <Project project={project} /> )}
               </div>
             </section>
@@ -143,7 +174,7 @@ const App = () => {
               <label>Message
                 <textarea ref={messageRef} id="message" name="message" required/>
               </label>
-              <button type="button" onClick={sendMessage}>SEND MESSAGE</button>
+              <button className="btn" type="button" onClick={sendMessage}>SEND MESSAGE</button>
             </form>
           </div>
         </section>

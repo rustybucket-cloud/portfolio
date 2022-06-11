@@ -40,6 +40,7 @@ nav {
     scroll-snap-type: y mandatory;
     overscroll-behavior: contain;
     scroll-behavior: smooth;
+    scroll-padding: 10px;
 }
 
 section {
@@ -107,48 +108,56 @@ section {
 
     .section-content {
         max-width: 80vw;
-        height: 80%;
+        height: 90%;
         overflow-y: hidden;
         padding-bottom: 5vw;
         display: grid;
         grid-auto-flow: column;
         gap: 5vw;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        overscroll-behavior: contain;
+        /* scroll-snap-type: x mandatory;
+        overscroll-behavior: contain;  */
+    }
 
-        .project {
-            width: 60vw;
-            scroll-snap-align: center;
-            border: 2px solid white;
-            border-radius: 10px;
-        }
+    .project {
+        width: 60vw;
+        /* scroll-snap-align: center; */
+        border: 2px solid white;
+        border-radius: 10px;
+        max-height: 32vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     h3 { text-align: center; }
     figure {
+        max-height: 40%;
         img {
             margin: auto;
-            max-height: 50vh;
+            height: 100%;
+            width: auto;
         }
     }
 
+    .section-content {
+        max-height: 40%;
+    }
+
+    .project {
+        height: 100%;
+    }
+
     &__btns {
+        justify-self: flex-end;
         max-width: 30rem;
         margin: 1rem auto;
         display: grid;
-        gap: 1rem;
+        gap: .25rem;
         grid-template-columns: 1fr;
-
-        a {
-            background-color: #FFFFA2;
-            color: black;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
+        width: 100%;
+        
+        .btn { margin: auto; }
     }
 
     .change-project {
@@ -199,13 +208,13 @@ section {
 
     color: #D97904;
 
-    button { 
+/*     button { 
         position: absolute;
         background: none; 
         border: none; 
         right: 1rem;
         top: 1rem;
-    }
+    } */
     svg {
         height: 1rem;
     }
@@ -232,9 +241,4 @@ section {
         border-radius: 5px;
     }
     textarea { height: 15rem; }
-    button { 
-        margin-top: 1rem; 
-        background-color: #D63BD9;
-        color: white;
-    }
 }

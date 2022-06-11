@@ -12,9 +12,9 @@ export default function Project({project}) {
             <img src={project.img} alt="a screenshot of a project"/>
           </figure>
           <div className="projects__btns">
-            <a href={project.live} target="_blank" rel="noreferrer">Live Site</a>
-            <a href={project.code} target="_blank" rel="noreferrer">Code</a>
-            <button onClick={() => setIsFullPage(true)}>About this Project</button>
+            <a href={project.live} className="btn" target="_blank" rel="noreferrer">Live Site</a>
+            <a href={project.code} className="btn" target="_blank" rel="noreferrer">Code</a>
+            <button className="btn" onClick={() => setIsFullPage(true)}>About this Project</button>
           </div>
           <div className="projects__used">
           </div>

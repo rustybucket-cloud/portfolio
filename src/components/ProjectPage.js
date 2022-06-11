@@ -3,7 +3,7 @@ import { ReactComponent as X } from "../images/icons/x-solid.svg"
 export default function ProjectPage({project, setIsFullPage}) {
     return project ? (
         <div className="projectPage">
-            <button aria-label="close modal" classList="projectPage__close" onClick={() => setIsFullPage(false)}>
+            <button aria-label="close modal" classList="projectPage__close btn" onClick={() => setIsFullPage(false)}>
                 <X />
             </button>
             <h1>{project.name}</h1>

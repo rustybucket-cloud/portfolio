@@ -1,10 +1,14 @@
 @media screen and (min-width: 840px) {
     svg { display: initial; }
     .projects {
+        figure {
+            max-height: 40%;
+        }
+
         &__btns { 
             grid-template-columns: repeat(3, 1fr); 
             a {
-                padding: 2rem;
+                padding: 1rem;
             }
         }
     }
