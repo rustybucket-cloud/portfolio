@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+@function responsive($max) {
+  $baseMaxPx: 64;
+  $baseVw: 5;
+  $ratio: $max / $baseMaxPx;
+  $min: $max / 2 + px;
+  $vw: $ratio * $baseVw + vw;
+  $maxPx: $max + px;
+  @return clamp($min, $vw, $maxPx);
+}
+
+:root {
+  --color-dark-blue: #026E81;
+  --color-light-blue: #0099DD;
+  --color-orange: #FF9933;
+  --color-gray-blue: #A1C7E0;
+  --color-off-white: #F8F0E3;
+
+  --font-large: #{responsive(64)};
+  --font-medium: #{responsive(32)};
+  --font-small: #{responsive(24)};
+
+  --max-width: 1200px;
+
+  --border-radius: 5px;
+
+  --spacer-lg: #{responsive(32)};
+  --spacer-md: #{responsive(16)};
+  --spacer-sm: #{responsive(8)};
+}
+
+* {
+  font-family: 'Electrolize', sans-serif;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rounded-corners {
+  border-radius: var(--border-radius);
+}

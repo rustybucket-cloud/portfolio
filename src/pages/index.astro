@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+import resumeItems from '../scripts/home/resumeItems';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<div class="sections">
+			<section class="about-me">
+				<div class="section-content">
+					<h1>Hi! I'm Jacob Patton!</h1>
+					<figure class="rounded-corners">
+						<picture>
+							<source media="(max-width: 500px)" srcset="/assets/images/jacob/sm.jpg">
+							<img src="/assets/images/jacob/lg.jpg" alt="A man standing in front of a tree">
+						</picture>
+					</figure>
+					<p class="subheading">I'm a Web developer who loves to create!</p>
+				</div>
+			</section>
+
+			<section class="resume">
+				<div class="section-content">
+					<h2>My Resume</h2>
+					<ul class="list rounded-corners">
+						<li>
+							<h3>Work History</h3>
+							<ul class="resume_section_list">
+								{resumeItems.jobs.map((job) => (
+									<li>
+									<div class="flex-between">
+										<h4>{job.name}</h4>
+										<p>{job.duration}</p>
+									</div>
+									<p>{job.title}</p>
+									<ul class="responsabilities">{job.responsabilities.map((r) => <li>{r}</li>)}</ul>
+								</li>
+								))}
+						</ul>
+						</li>
+						<li>
+							<h3>Education</h3>
+							<ul class="resume_section_list">
+								{resumeItems.education.map((item) => (
+									<li>
+										<div class="flex-between">
+											<h4>{item.name}</h4>	
+											<p>{item.duration}</p>
+										</div>
+										<div class="flex-between">
+											<p>{item.title}</p>
+											<p>{item.degree}</p>
+										</div>
+									</li>
+								))}
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- <section class="projects">
+				<div class="section-content">
+					<h2>Projects</h2>
+				</div>
+			</section> -->
+
+			<section class="contact-me">
+				<div class="section-content">
+					<h2>Contact Me</h2>
+					<form class="contact-form">
+						<h3>Send Me a Message</h3>
+						<label>Your Name
+							<input type="text" name="name">
+						</label>
+						<label>Your Email
+							<input type="email" name="email">
+						</label>
+						<label>Your Message
+							<textarea name="message" id="contact-message" cols="30" rows="10"></textarea>
+						</label>
+						<button>Send Message</button>
+					</form>
+					<div class="icons">
+						<img src="/assets/icons/linkedin.svg" alt="Linkedin icon">
+						<img src="/assets/icons/github.svg" alt="Github icon">
+						<img src="/assets/icons/twitter.svg" alt="Twitter icon">
+
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style lang="scss">
+	.sections {
+		max-height: 100vh;
+		overflow-y: auto;
+		scroll-snap-type: y mandatory;
+	}
+	section {
+		min-height: 100vh;
+		scroll-snap-align: start;
+		padding: var(--spacer-md);
+		padding-top: var(--spacer-lg);
+	}
+	.section-content {
+		max-width: var(--max-width);
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		--extra-bottom-space: 10px;
+		height: calc(100vh - (2 * var(--spacer-md)));
+	}
+	.responsabilities {
+		padding-left: var(--spacer-lg);
+	}
+	.resume_section_list {
+		padding-left: var(--spacer-sm);
+		list-style-type: none;
+		&>li {
+			padding-bottom: var(--spacer-sm);
+		}
+	}
+	.contact-form {
+		display: grid;
+		width: 100%;
+		gap: var(--spacer-sm);
+		label { display: grid; }
+		textarea { resize: none; }
+		button { 
+			background-color: var(--color-gray-blue);
+			$color: var(--color-gray-blue);
+			border: none;
+			hover: lighten($color, 10%);
+			@media screen and (min-width: 600px) {
+				max-width: 250px;
+			}
+		}
+		input, button, textarea { 
+			border-radius: var(--border-radius); 
+			padding: var(--spacer-sm);
+		}
+	}
+	.icons {
+		display: flex;
+		gap: var(--spacer-sm);
+		padding-top: var(--spacer-lg);
+		img { 
+			height: clamp(30px, 20vw, 90px);
+			width: clamp(30px, 20vw, 90px);
+		}
+	}
+
+	h1, h2 {
+		font-size: var(--font-large);
+	}
+	.subheading {
+		font-size: var(--font-medium);
+	}
+	figure { overflow: hidden; }
+	ul { padding-left: 0; }
+
+	.about-me { 
+		background-color: var(--color-dark-blue); 
+		
+		.section-content { justify-content: space-between; }
+	}
+	.resume { 
+		background-color: var(--color-light-blue);
+
+		.list {
+			background-color: var(--color-off-white);
+			height: 100%;
+			list-style-type: none;
+			width: 100%;
+			max-width: calc(var(--max-width) * (3/4));
+			font-size: var(--font-small);
+			padding: var(--spacer-md);
+		}
+	}
+	.projects { background-color: var(--color-gray-blue); }
+	.contact-me { background-color: var(--color-orange); }
+</style>

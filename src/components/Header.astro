@@ -1,0 +1,33 @@
+<header>
+  <nav>
+    <ul>
+      <li><a href="/">About Me</a></li>
+      <li><a href="/blogs">Blogs</a></li>
+      <li><a href="/data">Data Science</a></li>
+      <li><a href="/web">Web Projects</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style lang="scss">
+  header {
+    position: fixed;
+    inset: 0 0 auto 0;
+  }
+  nav {
+    max-width: var(--max-width); 
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  ul { 
+    display: flex; 
+    gap: var(--spacer-md);
+  }
+  li { list-style-type: none; }
+  a { 
+    text-decoration: none; 
+    color: black; 
+    &:hover { color: white; }
+  }
+</style>
