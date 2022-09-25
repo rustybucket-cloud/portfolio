@@ -1,0 +1,22 @@
+.contact-form {
+  display: grid;
+  width: 100%;
+  gap: var(--spacer-sm);
+  label { display: grid; }
+  textarea { resize: none; }
+  button { 
+    background-color: var(--color-gray-blue);
+    border: none;
+    &:hover { background-color: var(--color-light-blue); }
+    @media screen and (min-width: 600px) {
+      max-width: 250px;
+    }
+  }
+  input, button, textarea { 
+    border-radius: var(--border-radius); 
+    padding: var(--spacer-sm);
+  }
+  .error {
+    color: red;
+  }
+}

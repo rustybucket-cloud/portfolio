@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import resumeItems from '../scripts/home/resumeItems';
+import ContactForm from '../components/ContactForm/ContactForm.jsx';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -68,7 +69,7 @@ import resumeItems from '../scripts/home/resumeItems';
 			<section class="contact-me">
 				<div class="section-content">
 					<h2>Contact Me</h2>
-					<form class="contact-form">
+					<!-- <form class="contact-form" action="/api/mail">
 						<h3>Send Me a Message</h3>
 						<label>Your Name
 							<input type="text" name="name">
@@ -80,12 +81,12 @@ import resumeItems from '../scripts/home/resumeItems';
 							<textarea name="message" id="contact-message" cols="30" rows="10"></textarea>
 						</label>
 						<button>Send Message</button>
-					</form>
+					</form> -->
+					<ContactForm client:load />
 					<div class="icons">
 						<img src="/assets/icons/linkedin.svg" alt="Linkedin icon">
 						<img src="/assets/icons/github.svg" alt="Github icon">
 						<img src="/assets/icons/twitter.svg" alt="Twitter icon">
-
 					</div>
 				</div>
 			</section>
@@ -122,26 +123,6 @@ import resumeItems from '../scripts/home/resumeItems';
 		list-style-type: none;
 		&>li {
 			padding-bottom: var(--spacer-sm);
-		}
-	}
-	.contact-form {
-		display: grid;
-		width: 100%;
-		gap: var(--spacer-sm);
-		label { display: grid; }
-		textarea { resize: none; }
-		button { 
-			background-color: var(--color-gray-blue);
-			$color: var(--color-gray-blue);
-			border: none;
-			hover: lighten($color, 10%);
-			@media screen and (min-width: 600px) {
-				max-width: 250px;
-			}
-		}
-		input, button, textarea { 
-			border-radius: var(--border-radius); 
-			padding: var(--spacer-sm);
 		}
 	}
 	.icons {
